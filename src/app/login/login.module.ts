@@ -7,7 +7,6 @@ import {LogoComponent} from './logo/logo.component';
 import {FormLoginComponent} from './form-login/form-login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {LoginService} from "./service/login.service";
 import { FormSignUpComponent } from './form-sign-up/form-sign-up.component';
 
 
@@ -24,11 +23,7 @@ import { FormSignUpComponent } from './form-sign-up/form-sign-up.component';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [
-    LoginService
+    ReactiveFormsModule
   ]
 })
 export class LoginModule {
