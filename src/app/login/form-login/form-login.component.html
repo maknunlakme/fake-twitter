@@ -1,5 +1,18 @@
 <form [formGroup]="login">
-  <input type="text" formControlName="email" placeholder="email">
-  <input type="password" formControlName="password" placeholder="password">
-  <button type="submit" (click)="loginUser()">Confirm</button>
+  <div class="mb-3">
+  <input type="text" formControlName="email" placeholder="email" class="form-control">
+  </div>
+  <div class="mb-3">
+  <input type="password" formControlName="password" placeholder="password" class="form-control">
+  </div>
+  <div class="d-grid gap-2">
+  <button type="submit" (click)="loginUser()" class="btn btn-primary">Confirm</button>
+  </div>
 </form>
+
+<p class="fs-6 pt-5">
+  Want to create an account?
+</p>
+<div class="d-grid gap-2">
+  <button type="button" (click)="goToSignUp()" class="btn btn-outline-primary">Sign Up</button>
+</div>

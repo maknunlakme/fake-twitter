@@ -1,12 +1,18 @@
-<div class="split left">
-  <div class="centered">
-    <img src="./../../assets/Logo_of_Twitter.svg" alt="Twitter Logo">
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none col-md-6 d-md-flex align-items-center justify-content-center vh-100">
+      <img src="./../../assets/Logo_of_Twitter.svg" alt="Twitter Logo" class="w-50">
+    </div>
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center vh-100">
+      <ng-container *ngIf="login==true; then loginForm else signUpForm">
+      </ng-container>
+    </div>
   </div>
 </div>
+<ng-template #loginForm>
+  <app-form-login (loginEvent)="getLoginValue($event)"></app-form-login>
+</ng-template>
 
-<div class="split right">
-  <div class="centered">
-    <app-form-login></app-form-login>
-    <app-form-sign-up></app-form-sign-up>
-  </div>
-</div>
+<ng-template #signUpForm>
+  <app-form-sign-up (loginEvent)="getLoginValue($event)"></app-form-sign-up>
+</ng-template>

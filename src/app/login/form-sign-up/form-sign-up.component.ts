@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import {Component, Output, EventEmitter, OnDestroy} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {LoginService} from "../../service/login.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-form-sign-up',
   templateUrl: './form-sign-up.component.html',
   styleUrls: ['./form-sign-up.component.scss']
 })
-export class FormSignUpComponent {
+export class FormSignUpComponent implements OnDestroy {
+  @Output() loginEvent: EventEmitter<boolean> = new EventEmitter();
+  signUpSubscription: Subscription;
+
   signUp = this.formBuilder.group({
     username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.pattern(
@@ -20,12 +24,23 @@ export class FormSignUpComponent {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
   ) {
+    this.signUpSubscription = Subscription.EMPTY;
+  }
+
+  ngOnDestroy() {
+    this.signUpSubscription.unsubscribe();
+  }
+
+  goToLogin() {
+    this.loginEvent.emit(true);
   }
 
   signUpUser() {
-    this.loginService.postSignUp(this.signUp.value).subscribe((data)=>{
-      console.log('post sign-up data: ', data);
-      this.signUp.reset();
-    })
+    this.signUpSubscription = this.loginService
+      .postSignUp(this.signUp.value)
+      .subscribe((data) => {
+        this.signUp.reset();
+        this.goToLogin();
+      })
   }
 }
