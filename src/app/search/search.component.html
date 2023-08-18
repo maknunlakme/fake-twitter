@@ -1,6 +1,15 @@
-<app-nav-bar></app-nav-bar>
-<div *ngFor="let user of users">
-  <div>{{user.username}}</div>
-  <div>{{user.join_date}}</div>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <app-nav-bar></app-nav-bar>
+    </div>
+    <div class="col-7">
+      <div *ngFor="let user of users">
+        <app-user [user]="user"></app-user>
+      </div>
+    </div>
+    <div class="col-3">
+      <app-search-user></app-search-user>
+    </div>
+  </div>
 </div>
-<app-search-user></app-search-user>

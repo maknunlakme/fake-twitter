@@ -7,6 +7,7 @@ import { NewTweetComponent } from './new-tweet/new-tweet.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {NavBarModule} from "../shared/modules/nav-bar/nav-bar.module";
 import {SearchUserModule} from "../shared/modules/search-user/search-user.module";
+import {TweetModule} from "../shared/modules/tweet/tweet.module";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {SearchUserModule} from "../shared/modules/search-user/search-user.module
         HomeRoutingModule,
         ReactiveFormsModule,
         NavBarModule,
-        SearchUserModule
+        SearchUserModule,
+        TweetModule
     ]
 })
 export class HomeModule { }
