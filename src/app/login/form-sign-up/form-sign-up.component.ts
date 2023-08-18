@@ -1,20 +1,20 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {LoginService} from "../service/login.service";
 
 @Component({
-  selector: 'app-form-login',
-  templateUrl: './form-login.component.html',
-  styleUrls: ['./form-login.component.scss']
+  selector: 'app-form-sign-up',
+  templateUrl: './form-sign-up.component.html',
+  styleUrls: ['./form-sign-up.component.scss']
 })
-export class FormLoginComponent {
-  login = this.formBuilder.group({
+export class FormSignUpComponent {
+  signUp = this.formBuilder.group({
+    username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.pattern(
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     )]],
     password: ['', [Validators.required]]
   });
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,10 +22,9 @@ export class FormLoginComponent {
   ) {
   }
 
-
-  loginUser() {
-    this.loginService.postLogin(this.login.value).subscribe((data)=>{
-      console.log('post login data: ', data);
+  signUpUser() {
+    this.loginService.postSignUp(this.signUp.value).subscribe((data)=>{
+      console.log('post sign-up data: ', data);
     })
   }
 }

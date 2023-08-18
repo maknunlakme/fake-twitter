@@ -8,13 +8,15 @@ import {FormLoginComponent} from './form-login/form-login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LoginService} from "./service/login.service";
+import { FormSignUpComponent } from './form-sign-up/form-sign-up.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     LogoComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    FormSignUpComponent
   ],
   exports: [
     LoginComponent

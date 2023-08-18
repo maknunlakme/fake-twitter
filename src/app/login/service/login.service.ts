@@ -16,4 +16,11 @@ export class LoginService {
     });
     return this.http.post(environment.apiBaseUrl + environment.version + '/login', body, {headers});
   }
+
+  postSignUp(body: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.apiBaseUrl + environment.version + '/signup', body, {headers});
+  }
 }
