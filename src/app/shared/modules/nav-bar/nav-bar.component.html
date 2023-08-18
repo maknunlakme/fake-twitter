@@ -1,3 +1,45 @@
-<button (click)="redirectTo('/home')">Home</button>
-<button (click)="redirectTo('/explore')">Explore</button>
-<button (click)="logOut()">LogOut</button>
+<!--<div>-->
+<!--  <img src="assets/Logo_of_Twitter.svg" alt="Twitter-Logo" class="w-25">-->
+<!--</div>-->
+
+<!--<button (click)="redirectTo('/home')">Home</button>-->
+<!--<button (click)="redirectTo('/explore')">Explore</button>-->
+<!--<button (click)="logOut()">LogOut</button>-->
+<nav class="navbar navbar-expand-lg flex-column">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav flex-column">
+        <li class="nav-item">
+          <a class="navbar-brand" href="#">
+            <img src="assets/Logo_of_Twitter.svg" alt="Twitter-Logo" width="30" height="24"
+                 class="d-inline-block align-text-top">
+            Twitter
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">
+            <i class="bi bi-house"></i>
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/explore">
+            <i class="bi bi-search"></i>
+            Explore
+          </a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link active" aria-current="page">
+            <i class="bi bi-box-arrow-right"></i>
+            LogOut
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,4 +1,8 @@
 <form [formGroup]="search">
-  <input type="text" formControlName="content" placeholder="Search">
-  <button type="submit" (click)="onSearch()">Post</button>
+  <div class="mb-3">
+    <input type="text" formControlName="content" placeholder="Search" class="form-control">
+  </div>
+  <div class="d-grid gap-2">
+    <button type="submit" (click)="onSearch()" class="btn btn-outline-secondary">Search</button>
+  </div>
 </form>
