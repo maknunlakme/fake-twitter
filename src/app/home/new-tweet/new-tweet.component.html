@@ -1,0 +1,5 @@
+<form [formGroup]="tweet">
+  <input type="text" formControlName="content" placeholder="What is happening?!">
+  <button type="submit" (click)="onTweet()">Post</button>
+</form>
+
