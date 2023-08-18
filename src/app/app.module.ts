@@ -6,6 +6,8 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtTokenInterceptor} from "./interceptor/jwt-token.interceptor";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {SearchUserModule} from "./shared/modules/search-user/search-user.module";
+import {NavBarModule} from "./shared/modules/nav-bar/nav-bar.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    SearchUserModule,
+    NavBarModule
   ],
   providers: [
     {

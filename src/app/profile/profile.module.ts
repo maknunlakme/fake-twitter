@@ -3,19 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
-import {NavBarModule} from "../shared/modules/nav-bar/nav-bar.module";
-import {SearchUserModule} from "../shared/modules/search-user/search-user.module";
+import {HomeModule} from "../home/home.module";
+import {TweetModule} from "../shared/modules/tweet/tweet.module";
 
 
 @NgModule({
   declarations: [
     ProfileComponent
   ],
-    imports: [
-        CommonModule,
-        ProfileRoutingModule,
-        NavBarModule,
-        SearchUserModule
-    ]
+  imports: [
+    CommonModule,
+    ProfileRoutingModule,
+    HomeModule,
+    TweetModule
+  ]
 })
 export class ProfileModule { }

@@ -1,4 +1,3 @@
-<app-nav-bar></app-nav-bar>
 <div *ngIf="userInfo">
   <div>{{userInfo.username}}</div>
   <div>{{userInfo.join_date}}</div>
@@ -8,9 +7,7 @@
 <div *ngIf="followings"> {{followings.count}}</div>
 
 <div *ngFor="let tweet of tweets">
-  <div>{{tweet.content}}</div>
-  <div>{{tweet.published}}</div>
-  <div>{{tweet.user.username}}</div>
+  <app-tweet [tweet]="tweet"></app-tweet>
   <br>
 </div>
-<app-search-user></app-search-user>
+
