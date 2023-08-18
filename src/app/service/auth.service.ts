@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  authToken: string | null;
+  authToken: any;
 
   constructor() {
   }
@@ -13,8 +13,9 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if (!token) {
       return false;
+    } else {
+      return true;
+      // return !this.jwtHelper.isTokenExpired(token);
     }
-    return true;
-    // return !this.jwtHelper.isTokenExpired(token);
   }
 }

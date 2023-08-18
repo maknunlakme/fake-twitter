@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {LoginService} from "../../service/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-form-login',
@@ -19,13 +20,15 @@ export class FormLoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
+    private router: Router
   ) {
   }
 
 
   loginUser() {
-    this.loginService.postLogin(this.login.value).subscribe((data)=>{
-      console.log('post login data: ', data);
+    this.loginService.postLogin(this.login.value).subscribe((data: any) => {
+      localStorage.setItem('token', data.token);
+      this.router.navigate(['/home']);
     })
   }
 }
