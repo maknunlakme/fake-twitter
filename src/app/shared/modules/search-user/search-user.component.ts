@@ -21,5 +21,6 @@ export class SearchUserComponent {
 
   onSearch() {
     this.router.navigate(['/search'], {queryParams: this.search.value});
+    this.search.reset();
   }
 }

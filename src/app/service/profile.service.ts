@@ -9,6 +9,10 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
+  getUsers() {
+    return this.http.get(environment.apiBaseUrl + environment.version + '/users');
+  }
+
   postSearchUsername(body: any) {
     return this.http.post(environment.apiBaseUrl + environment.version + '/search', body);
   }

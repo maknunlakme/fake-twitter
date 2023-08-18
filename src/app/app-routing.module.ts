@@ -13,6 +13,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'explore',
+    loadChildren: () => import('./explore/explore.module').then(m => m.ExploreModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'search',
     loadChildren: () => import('./search/search.module').then(m => m.SearchModule),
     canActivate: [AuthGuard]
@@ -26,7 +31,8 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  }
+  },
+
 ];
 
 @NgModule({
