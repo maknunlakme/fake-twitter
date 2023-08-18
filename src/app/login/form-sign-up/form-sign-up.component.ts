@@ -25,6 +25,7 @@ export class FormSignUpComponent {
   signUpUser() {
     this.loginService.postSignUp(this.signUp.value).subscribe((data)=>{
       console.log('post sign-up data: ', data);
+      this.signUp.reset();
     })
   }
 }

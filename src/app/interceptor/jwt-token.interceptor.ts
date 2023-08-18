@@ -15,14 +15,19 @@ export class JwtTokenInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let newRequest = request.clone({
-      headers: request.headers.set('Content-Type', 'application/json')
-    });
+    let newRequest;
     if (this.authService.isLoggedIn()) {
       newRequest = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${this.authService.authToken}`)
+        headers: request.headers
+          .set('Content-Type', 'application/json')
+          .set('X-Jwt-Token', `Bearer ${this.authService.authToken}`)
+      });
+    } else {
+      newRequest = request.clone({
+        headers: request.headers.set('Content-Type', 'application/json')
       });
     }
+
     return next.handle(newRequest);
   }
 }

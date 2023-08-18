@@ -29,6 +29,7 @@ export class FormLoginComponent {
     this.loginService.postLogin(this.login.value).subscribe((data: any) => {
       localStorage.setItem('token', data.token);
       this.router.navigate(['/home']);
+      this.login.reset();
     })
   }
 }

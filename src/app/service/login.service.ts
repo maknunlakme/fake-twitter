@@ -11,16 +11,10 @@ export class LoginService {
   }
 
   postLogin(body: any) {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post(environment.apiBaseUrl + environment.version + '/login', body, {headers});
+    return this.http.post(environment.apiBaseUrl + environment.version + '/login', body);
   }
 
   postSignUp(body: any) {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post(environment.apiBaseUrl + environment.version + '/signup', body, {headers});
+    return this.http.post(environment.apiBaseUrl + environment.version + '/signup', body);
   }
 }
