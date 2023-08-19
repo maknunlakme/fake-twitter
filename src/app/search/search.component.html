@@ -1,4 +1,7 @@
-<div *ngFor="let user of users">
+<div *ngFor="let user of users?.search_results">
   <app-user [user]="user"></app-user>
   <br>
+</div>
+<div *ngIf="users?.count==0">
+  <h4>No Result Found</h4>
 </div>

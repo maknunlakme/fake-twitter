@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit{
         token: params['content']
       };
       this.searchService.postSearchUsername(body).subscribe((data:any)=>{
-        this.users = data.search_results;
+        this.users = data;
       })
     });
   }
