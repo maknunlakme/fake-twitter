@@ -6,15 +6,15 @@
 </ng-template>
 
 <ng-template #home>
-  <div class="container">
+  <div class="container mt-3">
     <div class="row">
       <div class="col-2">
         <app-nav-bar></app-nav-bar>
       </div>
-      <div class="col-7">
+      <div class="col-12 col-md-7 order-2 order-md-1">
         <router-outlet></router-outlet>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-md-3 order-1 order-md-2">
         <app-search-user></app-search-user>
       </div>
     </div>

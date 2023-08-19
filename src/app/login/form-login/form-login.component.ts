@@ -11,7 +11,13 @@ import {Subscription} from "rxjs";
 })
 export class FormLoginComponent implements OnDestroy {
   @Output() loginEvent: EventEmitter<boolean> = new EventEmitter();
+  @Output() toastEvent: EventEmitter<any> = new EventEmitter();
   loginSubscription: Subscription;
+  toast = {
+    show: false,
+    message: '',
+    className: ''
+  }
 
   login = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -36,6 +42,14 @@ export class FormLoginComponent implements OnDestroy {
       localStorage.setItem('token', data.token);
       this.router.navigate(['/home']);
       this.login.reset();
+      this.toastEvent.emit(this.toast);
+    }, (error)=>{
+      this.toast = {
+        show: true,
+        message: error.error.error,
+        className: 'bg-danger text-light position-absolute end-0'
+      }
+      this.toastEvent.emit(this.toast);
     })
   }
 

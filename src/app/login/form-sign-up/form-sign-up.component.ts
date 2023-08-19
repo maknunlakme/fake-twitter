@@ -47,7 +47,7 @@ export class FormSignUpComponent implements OnDestroy {
         this.goToLogin();
         this.toast = {
           show: true,
-          message: data.message,
+          message: 'Sign up successful, now you can login',
           className: 'bg-success text-light position-absolute end-0'
         }
         this.toastEvent.emit(this.toast);
