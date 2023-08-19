@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
 
   getMyTimeline() {
     this.tweetService.getTimeline(this.page, this.size).subscribe((data: any) => {
-      console.log('timeline data: ', data);
       this.timeline = data.timeline;
       this.tweetCount = data.count;
     })

@@ -32,7 +32,6 @@ export class FormLoginComponent implements OnDestroy {
   }
 
   loginUser() {
-    console.log('login value: ', this.login.get('password')?.invalid, this.login.touched, this.login.dirty, this.login.value);
     this.loginSubscription = this.loginService.postLogin(this.login.value).subscribe((data: any) => {
       localStorage.setItem('token', data.token);
       this.router.navigate(['/home']);
