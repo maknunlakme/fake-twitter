@@ -15,6 +15,5 @@ export class LoginComponent {
 
   getToastMessage($event: any) {
     this.toast = $event;
-    console.log('this toast: ', this.toast, $event);
   }
 }

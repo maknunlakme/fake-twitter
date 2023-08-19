@@ -20,7 +20,6 @@ export class NewTweetComponent {
 
   onTweet() {
     this.tweetService.postTweet(this.tweet.value).subscribe((data) => {
-      console.log('tweet response: ', data);
       this.tweet.reset();
     })
   }
