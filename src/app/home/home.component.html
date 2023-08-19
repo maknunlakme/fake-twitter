@@ -1,4 +1,7 @@
 <app-new-tweet></app-new-tweet>
+<br>
+<app-pagination (pageEvent)="getPageValue($event)" [currentPage]="this.page"
+                [nextValue]="tweetCount==0"></app-pagination>
 <div *ngFor="let tweet of timeline">
   <app-tweet [tweet]="tweet"></app-tweet>
   <br>

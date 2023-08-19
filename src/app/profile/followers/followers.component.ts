@@ -29,7 +29,7 @@ export class FollowersComponent implements AfterViewInit {
         this.followers = data;
       });
     } else {
-      this.myProfileService.getMyFollowers(this.id).subscribe((data: any) => {
+      this.myProfileService.getMyFollowers(this.id, this.page, this.size).subscribe((data: any) => {
         this.followers = data;
       });
     }

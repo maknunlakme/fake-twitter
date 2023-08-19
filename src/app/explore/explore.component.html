@@ -1,4 +1,7 @@
+<app-pagination (pageEvent)="getPageValue($event)" [currentPage]="this.page"
+                [nextValue]="userCount==0"></app-pagination>
 <div *ngFor="let user of users">
   <app-user [user]="user"></app-user>
+  <br>
 </div>
 

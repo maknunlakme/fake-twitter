@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
         this.tweets = data.tweets;
       });
     } else {
-      this.myProfileService.getMyTweets(this.id).subscribe((data: any) => {
+      this.myProfileService.getMyTweets(this.id, this.page, this.size).subscribe((data: any) => {
         this.tweetCount = data.count;
         this.tweets = data.my_tweets;
       });

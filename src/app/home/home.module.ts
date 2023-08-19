@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { NewTweetComponent } from './new-tweet/new-tweet.component';
 import {TweetModule} from "../shared/modules/tweet/tweet.module";
+import {PaginationModule} from "../shared/modules/pagination/pagination.module";
 
 
 @NgModule({
@@ -16,11 +17,12 @@ import {TweetModule} from "../shared/modules/tweet/tweet.module";
   exports: [
     NewTweetComponent
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    ReactiveFormsModule,
-    TweetModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        ReactiveFormsModule,
+        TweetModule,
+        PaginationModule
+    ]
 })
 export class HomeModule { }

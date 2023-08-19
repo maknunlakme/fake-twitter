@@ -9,11 +9,10 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers() {
-    return this.http.get(environment.apiBaseUrl + environment.version + '/users');
+  getUsers(page:any, size: any) {
+    const params: HttpParams = new HttpParams().set('page', page).set('size', size);
+    return this.http.get(environment.apiBaseUrl + environment.version + '/users', {params});
   }
-
-
 
   getUserTweets(id: any, page:any, size: any) {
     const params: HttpParams = new HttpParams().set('page', page).set('size', size);

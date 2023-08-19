@@ -29,7 +29,7 @@ export class FollowingComponent {
         this.followings = data;
       });
     } else {
-      this.myProfileService.getMyFollowings(this.id).subscribe((data: any) => {
+      this.myProfileService.getMyFollowings(this.id, this.page, this.size).subscribe((data: any) => {
         this.followings = data;
       });
     }
