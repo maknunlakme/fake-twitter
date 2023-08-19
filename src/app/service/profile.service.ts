@@ -13,19 +13,17 @@ export class ProfileService {
     return this.http.get(environment.apiBaseUrl + environment.version + '/users');
   }
 
-  postSearchUsername(body: any) {
-    return this.http.post(environment.apiBaseUrl + environment.version + '/search', body);
-  }
 
-  getUserTweets(id: number) {
+
+  getUserTweets(id: any) {
     return this.http.get(environment.apiBaseUrl + environment.version + '/users/' + id + '/tweets');
   }
 
-  getUserFollowers(id: number) {
+  getUserFollowers(id: any) {
     return this.http.get(environment.apiBaseUrl + environment.version + '/users/' + id + '/followers');
   }
 
-  getUserFollowings(id: number) {
+  getUserFollowings(id: any) {
     return this.http.get(environment.apiBaseUrl + environment.version + '/users/' + id + '/following');
   }
 }

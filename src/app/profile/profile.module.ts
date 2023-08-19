@@ -5,6 +5,8 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import {HomeModule} from "../home/home.module";
 import {TweetModule} from "../shared/modules/tweet/tweet.module";
+import {UserModule} from "../shared/modules/user/user.module";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import {TweetModule} from "../shared/modules/tweet/tweet.module";
     CommonModule,
     ProfileRoutingModule,
     HomeModule,
-    TweetModule
+    TweetModule,
+    UserModule,
+    NgbModule
   ]
 })
 export class ProfileModule { }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileService} from "../service/profile.service";
 import {ActivatedRoute} from "@angular/router";
+import {MyProfileService} from "../service/my-profile.service";
 
 @Component({
   selector: 'app-profile',
@@ -8,47 +9,65 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  id: any;
   userInfo: any;
   tweets: any;
   followers: any;
   followings: any;
+  active: any;
 
   constructor(
     private profileService: ProfileService,
+    private myProfileService: MyProfileService,
     private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    const body = {
-      token: this.route.snapshot.paramMap.get('profile')
-    };
-    this.profileService.postSearchUsername(body).subscribe((data: any) => {
-      if (data.count == 1) {
-        this.userInfo = data.search_results[0];
-        this.getFollowers();
-        this.getFollowings();
-        this.getTweets();
-      }
-    })
+    this.route.queryParams.subscribe(params => {
+      this.userInfo = params;
+      this.id = this.userInfo.id;
+      this.getFollowers();
+      this.getFollowings();
+      this.getTweets();
+    });
+
   }
 
   getTweets() {
-    this.profileService.getUserTweets(this.userInfo.id).subscribe((data: any) => {
-      this.tweets = data.tweets;
-    })
+    if (this.id) {
+      this.profileService.getUserTweets(this.id).subscribe((data: any) => {
+        this.tweets = data.tweets;
+      });
+    } else {
+      this.myProfileService.getMyTweets(this.id).subscribe((data: any) => {
+        this.tweets = data.my_tweets;
+      });
+    }
   }
 
   getFollowers() {
-    this.profileService.getUserFollowers(this.userInfo.id).subscribe((data: any) => {
-      this.followers = data;
-    })
+    if (this.id) {
+      this.profileService.getUserFollowers(this.id).subscribe((data: any) => {
+        this.followers = data;
+      });
+    } else {
+      this.myProfileService.getMyFollowers(this.id).subscribe((data: any) => {
+        this.followers = data;
+      });
+    }
   }
 
   getFollowings() {
-    this.profileService.getUserFollowings(this.userInfo.id).subscribe((data: any) => {
-      this.followings = data;
-    })
+    if (this.id) {
+      this.profileService.getUserFollowings(this.id).subscribe((data: any) => {
+        this.followings = data;
+      });
+    } else {
+      this.myProfileService.getMyFollowings(this.id).subscribe((data: any) => {
+        this.followings = data;
+      });
+    }
   }
 
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProfileService} from "../service/profile.service";
+import {SearchService} from "../service/search.service";
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,7 @@ export class SearchComponent implements OnInit{
   users: any;
   constructor(
     private route: ActivatedRoute,
-    private profileService: ProfileService
+    private searchService: SearchService
   ) {
   }
 
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit{
       const body = {
         token: params['content']
       };
-      this.profileService.postSearchUsername(body).subscribe((data:any)=>{
+      this.searchService.postSearchUsername(body).subscribe((data:any)=>{
         this.users = data.search_results;
         console.log('search data blah: ', data);
       })
