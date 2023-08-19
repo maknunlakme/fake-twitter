@@ -1,43 +1,33 @@
-<div>
-  <img src="./assets/profile-backgroud.jpg" alt="profile-background" class="img-fluid h-25 w-100 object-fit-cover">
-  <h1 *ngIf="userInfo">
-    @{{userInfo.username}}
-  </h1>
-  <h4>
-    {{userInfo.email}}
-  </h4>
-  <div>
-    <span>{{followers.count}} <span class="text-secondary"> Followers</span></span>
-    <span class="ms-3">{{followings.count}}<span class="text-secondary"> Following</span></span>
-  </div>
+<div *ngIf="userInfo">
+  <img src="./assets/profile-backgroud.jpg" alt="profile-background" class="img-fluid w-100 object-fit-cover">
+  <h1>@{{userInfo.username}}</h1>
+  <h4>{{userInfo.email}}</h4>
 </div>
 
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" (navChange)="onNavChange($event)">
   <li [ngbNavItem]="1">
     <button ngbNavLink>Post</button>
     <ng-template ngbNavContent>
-      <div *ngFor="let tweet of tweets">
-        <app-tweet [tweet]="tweet"></app-tweet>
-        <br>
-      </div>
+      <app-pagination (pageEvent)="getPageValue($event)" [currentPage]="this.page"
+                      [nextValue]="tweetCount==0"></app-pagination>
+      <ng-container *ngIf="tweets">
+        <div *ngFor="let tweet of tweets">
+          <app-tweet [tweet]="tweet"></app-tweet>
+          <br>
+        </div>
+      </ng-container>
     </ng-template>
   </li>
   <li [ngbNavItem]="2">
     <button ngbNavLink>Followers</button>
     <ng-template ngbNavContent>
-      <div *ngFor="let user of followers.followers">
-        <app-user [user]="user"></app-user>
-        <br>
-      </div>
+      <app-followers [id]="this.id"></app-followers>
     </ng-template>
   </li>
   <li [ngbNavItem]="3">
     <button ngbNavLink>Following</button>
     <ng-template ngbNavContent>
-      <div *ngFor="let user of followings.followings">
-        <app-user [user]="user"></app-user>
-        <br>
-      </div>
+      <app-following [id]="this.id"></app-following>
     </ng-template>
   </li>
 </ul>

@@ -7,11 +7,16 @@ import {HomeModule} from "../home/home.module";
 import {TweetModule} from "../shared/modules/tweet/tweet.module";
 import {UserModule} from "../shared/modules/user/user.module";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {PaginationModule} from "../shared/modules/pagination/pagination.module";
+import { FollowersComponent } from './followers/followers.component';
+import { FollowingComponent } from './following/following.component';
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    FollowersComponent,
+    FollowingComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +24,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     HomeModule,
     TweetModule,
     UserModule,
-    NgbModule
+    NgbModule,
+    PaginationModule
   ]
 })
 export class ProfileModule { }

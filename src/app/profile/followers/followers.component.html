@@ -1,0 +1,8 @@
+<app-pagination (pageEvent)="getPageValue($event)" [currentPage]="this.page"
+                [nextValue]="followers?.count==0"></app-pagination>
+<ng-container *ngIf="followers">
+  <div *ngFor="let user of followers.followers">
+    <app-user [user]="user"></app-user>
+    <br>
+  </div>
+</ng-container>

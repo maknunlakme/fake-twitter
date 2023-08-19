@@ -1,0 +1,10 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li [class]="setDisableClass(currentPage==1)">
+      <button class="page-link" (click)="pageEvent.emit(currentPage-1)">Previous</button>
+    </li>
+    <li [class]="setDisableClass(nextValue==true)">
+      <button class="page-link" (click)="pageEvent.emit(currentPage+1)">Next</button>
+    </li>
+  </ul>
+</nav>
