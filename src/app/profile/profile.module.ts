@@ -10,13 +10,15 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {PaginationModule} from "../shared/modules/pagination/pagination.module";
 import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
+import { PostsComponent } from './posts/posts.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     FollowersComponent,
-    FollowingComponent
+    FollowingComponent,
+    PostsComponent
   ],
   imports: [
     CommonModule,

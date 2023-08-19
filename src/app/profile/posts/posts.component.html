@@ -1,0 +1,8 @@
+<app-pagination (pageEvent)="getPageValue($event)" [currentPage]="this.page"
+                [nextValue]="tweetCount==0"></app-pagination>
+<ng-container *ngIf="tweets">
+  <div *ngFor="let tweet of tweets">
+    <app-tweet [tweet]="tweet"></app-tweet>
+    <br>
+  </div>
+</ng-container>

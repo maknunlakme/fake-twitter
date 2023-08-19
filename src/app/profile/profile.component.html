@@ -10,18 +10,11 @@
     <button type="button" class="btn btn-dark btn-sm float-end me-1" (click)="followUser()" *ngIf="this.id">Follow</button>
 </div>
 
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" (navChange)="onNavChange($event)">
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
   <li [ngbNavItem]="1">
     <button ngbNavLink>Post</button>
     <ng-template ngbNavContent>
-      <app-pagination (pageEvent)="getPageValue($event)" [currentPage]="this.page"
-                      [nextValue]="tweetCount==0"></app-pagination>
-      <ng-container *ngIf="tweets">
-        <div *ngFor="let tweet of tweets">
-          <app-tweet [tweet]="tweet"></app-tweet>
-          <br>
-        </div>
-      </ng-container>
+      <app-posts [id]="this.id"></app-posts>
     </ng-template>
   </li>
   <li [ngbNavItem]="2">
