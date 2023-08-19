@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
+  isMenuCollapsed = true;
   constructor(private router: Router) {
   }
 

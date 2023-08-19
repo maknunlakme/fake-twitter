@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NavBarComponent} from "./nav-bar.component";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 
@@ -9,7 +10,8 @@ import {NavBarComponent} from "./nav-bar.component";
     NavBarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgbModule
   ],
   exports: [
     NavBarComponent
