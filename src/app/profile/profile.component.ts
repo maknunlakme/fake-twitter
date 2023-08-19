@@ -3,6 +3,7 @@ import {ProfileService} from "../service/profile.service";
 import {ActivatedRoute} from "@angular/router";
 import {MyProfileService} from "../service/my-profile.service";
 import {NgbNavChangeEvent} from "@ng-bootstrap/ng-bootstrap";
+import {SearchService} from "../service/search.service";
 
 @Component({
   selector: 'app-profile',
@@ -15,13 +16,15 @@ export class ProfileComponent implements OnInit {
   tweets: any;
   tweetCount: any;
   active: any;
-  page:any = 1;
+  page: any = 1;
   size: any = 30;
+  toast: any;
 
   constructor(
     private profileService: ProfileService,
     private myProfileService: MyProfileService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private searchService: SearchService
   ) {
   }
 
@@ -29,9 +32,9 @@ export class ProfileComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.userInfo = params;
       this.id = this.userInfo.id;
+      this.active = 1;
       this.getTweets();
     });
-
   }
 
   getTweets() {
@@ -55,5 +58,25 @@ export class ProfileComponent implements OnInit {
 
   onNavChange($event: NgbNavChangeEvent<any>) {
     this.page = 1;
+  }
+
+  unfollowUser() {
+    this.searchService.postUnfollow({user_id: this.id}).subscribe((data: any) => {
+      this.toast = {
+        show: true,
+        message: data.resp,
+        className: 'bg-success text-light position-absolute end-0'
+      }
+    });
+  }
+
+  followUser() {
+    this.searchService.postFollow({user_id: this.id}).subscribe((data:any) => {
+      this.toast = {
+        show: true,
+        message: data.resp,
+        className: 'bg-success text-light position-absolute end-0'
+      }
+    });
   }
 }

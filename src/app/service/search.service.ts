@@ -12,4 +12,12 @@ export class SearchService {
   postSearchUsername(body: any) {
     return this.http.post(environment.apiBaseUrl + environment.version + '/search', body);
   }
+
+  postFollow(body:any) {
+    return this.http.post(environment.apiBaseUrl + environment.version + '/follow', body);
+  }
+
+  postUnfollow(body: any) {
+    return this.http.post(environment.apiBaseUrl + environment.version + '/unfollow', body);
+  }
 }

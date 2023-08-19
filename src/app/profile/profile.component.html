@@ -1,7 +1,13 @@
+<ngb-toast *ngIf="toast?.show" (hidden)="toast.show=false" [class]="toast.className">
+  {{toast.message}}
+</ngb-toast>
+
 <div *ngIf="userInfo">
   <img src="./assets/profile-backgroud.jpg" alt="profile-background" class="img-fluid w-100 object-fit-cover">
-  <h1>@{{userInfo.username}}</h1>
-  <h4>{{userInfo.email}}</h4>
+  <h3 *ngIf="userInfo.username">@{{userInfo.username}}</h3>
+  <h3 *ngIf="!userInfo.username">My Profile</h3>
+    <button type="button" class="btn btn-dark btn-sm float-end" (click)="unfollowUser()" *ngIf="this.id">Unfollow</button>
+    <button type="button" class="btn btn-dark btn-sm float-end me-1" (click)="followUser()" *ngIf="this.id">Follow</button>
 </div>
 
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" (navChange)="onNavChange($event)">
