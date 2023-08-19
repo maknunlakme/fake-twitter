@@ -1,12 +1,21 @@
 <form [formGroup]="signUp">
   <div class="mb-3">
     <input type="text" formControlName="username" placeholder="username" class="form-control">
+    <div *ngIf="showValidationMessage('username')" class="text-danger fst-italic">
+      Username is required.
+    </div>
   </div>
   <div class="mb-3">
     <input type="text" formControlName="email" placeholder="email" class="form-control">
+    <div *ngIf="showValidationMessage('email')" class="text-danger fst-italic">
+      Valid email is required.
+    </div>
   </div>
   <div class="mb-3">
     <input type="password" formControlName="password" placeholder="password" class="form-control">
+    <div *ngIf="showValidationMessage('password')" class="text-danger fst-italic">
+      Password must be at least 6 characters.
+    </div>
   </div>
   <div class="d-grid gap-2">
     <button type="submit" (click)="signUpUser()" class="btn btn-primary">Confirm</button>

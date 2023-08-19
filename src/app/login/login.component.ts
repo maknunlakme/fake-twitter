@@ -7,8 +7,14 @@ import {Component} from '@angular/core';
 })
 export class LoginComponent {
   login: boolean = true;
+  toast: any;
 
   getLoginValue($event: boolean) {
     this.login = $event;
+  }
+
+  getToastMessage($event: any) {
+    this.toast = $event;
+    console.log('this toast: ', this.toast, $event);
   }
 }

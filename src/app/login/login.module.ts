@@ -6,6 +6,7 @@ import {LoginRoutingModule} from './login-routing.module';
 import {LoginComponent} from './login.component';
 import {FormLoginComponent} from './form-login/form-login.component';
 import { FormSignUpComponent } from './form-sign-up/form-sign-up.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormSignUpComponent } from './form-sign-up/form-sign-up.component';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class LoginModule {

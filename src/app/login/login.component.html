@@ -1,3 +1,6 @@
+<ngb-toast *ngIf="toast?.show" [autohide]="false" (hidden)="toast.show=false" [class]="toast.className">
+  {{toast.message}}
+</ngb-toast>
 <div class="container-fluid">
   <div class="row">
     <div class="d-none col-md-6 d-md-flex align-items-center justify-content-center vh-100">
@@ -14,5 +17,7 @@
 </ng-template>
 
 <ng-template #signUpForm>
-  <app-form-sign-up (loginEvent)="getLoginValue($event)"></app-form-sign-up>
+  <app-form-sign-up (loginEvent)="getLoginValue($event)" (toastEvent)="getToastMessage($event)"></app-form-sign-up>
 </ng-template>
+
+

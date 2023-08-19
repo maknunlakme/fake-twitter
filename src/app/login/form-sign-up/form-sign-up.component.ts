@@ -10,14 +10,20 @@ import {Subscription} from "rxjs";
 })
 export class FormSignUpComponent implements OnDestroy {
   @Output() loginEvent: EventEmitter<boolean> = new EventEmitter();
+  @Output() toastEvent: EventEmitter<any> = new EventEmitter();
   signUpSubscription: Subscription;
+  toast = {
+    show: false,
+    message: '',
+    className: ''
+  }
 
   signUp = this.formBuilder.group({
     username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.pattern(
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     )]],
-    password: ['', [Validators.required]]
+    password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
   constructor(
@@ -38,9 +44,26 @@ export class FormSignUpComponent implements OnDestroy {
   signUpUser() {
     this.signUpSubscription = this.loginService
       .postSignUp(this.signUp.value)
-      .subscribe((data) => {
+      .subscribe((data:any) => {
         this.signUp.reset();
         this.goToLogin();
+        this.toast = {
+          show: true,
+          message: data.message,
+          className: 'bg-success text-light position-absolute end-0'
+        }
+        this.toastEvent.emit(this.toast);
+      }, (error)=>{
+        this.toast = {
+          show: true,
+          message: error.error.error,
+          className: 'bg-danger text-light position-absolute end-0'
+        }
+        this.toastEvent.emit(this.toast);
       })
+  }
+
+  showValidationMessage(value:string) {
+    return this.signUp.get(value)?.invalid && (this.signUp.get(value)?.touched || this.signUp.get(value)?.dirty);
   }
 }

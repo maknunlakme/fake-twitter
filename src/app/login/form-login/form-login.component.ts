@@ -14,10 +14,8 @@ export class FormLoginComponent implements OnDestroy {
   loginSubscription: Subscription;
 
   login = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.pattern(
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    )]],
-    password: ['', [Validators.required]]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
 
@@ -34,6 +32,7 @@ export class FormLoginComponent implements OnDestroy {
   }
 
   loginUser() {
+    console.log('login value: ', this.login.get('password')?.invalid, this.login.touched, this.login.dirty, this.login.value);
     this.loginSubscription = this.loginService.postLogin(this.login.value).subscribe((data: any) => {
       localStorage.setItem('token', data.token);
       this.router.navigate(['/home']);
@@ -44,4 +43,9 @@ export class FormLoginComponent implements OnDestroy {
   goToSignUp() {
     this.loginEvent.emit(false);
   }
+
+  showValidationMessage(value:string) {
+    return this.login.get(value)?.invalid && (this.login.get(value)?.touched || this.login.get(value)?.dirty);
+  }
+
 }
