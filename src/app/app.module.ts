@@ -8,6 +8,10 @@ import {JwtTokenInterceptor} from "./interceptor/jwt-token.interceptor";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {SearchUserModule} from "./shared/modules/search-user/search-user.module";
 import {NavBarModule} from "./shared/modules/nav-bar/nav-bar.module";
+import {environment} from "../environments/environment";
+import { initializeApp } from "firebase/app";
+
+initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
